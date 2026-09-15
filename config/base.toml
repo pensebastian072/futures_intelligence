@@ -1,0 +1,30 @@
+[project]
+mode = "SHADOW"
+timezone = "America/New_York"
+cutoff_time = "18:00"
+data_root = "D:/futures_intelligence_data"
+canonical_validation_root = "C:/Users/penas/copper_brain"
+
+[curve]
+root_symbol = "ES"
+target_dtes = [30, 60, 90, 180, 270, 365]
+primary_dtes = [90, 180, 270, 365]
+day_count = 365.25
+
+[databento]
+dataset = "GLBX.MDP3"
+parent_symbol = "ES.FUT"
+input_symbology = "parent"
+sample_start = "2018-06-01T00:00:00Z"
+sample_end = "2018-06-02T00:00:00Z"
+
+[lse]
+base_url = "https://api.londonstrategicedge.com/vault"
+legacy_secret_file = "C:/Users/penas/company_lab/secrets/lse.json"
+
+[cme]
+list_url = "https://datamine.new.cmegroup.com/api/list_entitlements_files"
+auth_url = "https://auth.cmegroup.com/as/token.oauth2"
+exchange_code = "XCME"
+product_code = "ES"
+

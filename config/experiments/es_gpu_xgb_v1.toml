@@ -1,0 +1,40 @@
+[experiment]
+id = "es_gpu_xgb_v1"
+mode = "SHADOW"
+seed = 1729
+promoted = false
+preregistered = true
+
+[sample]
+start = "2010-06-07"
+last_test_date = "2024-12-31"
+locked_holdout_start = "2025-01-01"
+shadow_start = "2026-01-01"
+
+[targets]
+primary_horizons = [5, 21, 63]
+
+[xgboost]
+n_estimators = 300
+max_depth = 3
+learning_rate = 0.03
+subsample = 0.8
+colsample_bytree = 0.8
+reg_lambda = 10.0
+min_child_weight = 10.0
+tree_method = "hist"
+requested_device = "cuda"
+
+[validation]
+first_test_year = 2016
+last_test_year = 2024
+n_trials = 6
+require_all_primary_horizons = true
+cost_fraction_per_side = 0.0005
+holdout_unlocked = false
+
+[rl]
+enabled = false
+minimum_oos_transitions = 1500
+requires_dated_curve = true
+requires_supervised_gate = true

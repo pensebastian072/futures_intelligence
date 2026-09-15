@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "futures-intelligence"
+version = "0.1.0"
+description = "Point-in-time futures curve research engine (ES MVP, SHADOW only)."
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "duckdb>=1.3",
+  "numpy>=2.0",
+  "pandas>=2.2",
+  "pyarrow>=18",
+  "python-dotenv>=1.0",
+  "requests>=2.32",
+  "scikit-learn>=1.6",
+  "scipy>=1.14",
+  "statsmodels>=0.14",
+  "yfinance>=1.0",
+]
+
+[project.optional-dependencies]
+databento = ["databento>=0.50"]
+gpu = ["xgboost>=3.1,<4"]
+dev = ["pytest>=8", "pytest-cov>=5"]
+
+[project.scripts]
+futures-intelligence = "futures_intelligence.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
