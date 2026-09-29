@@ -1,3 +1,4 @@
+from pathlib import Path
 import os
 
 import numpy as np
@@ -26,6 +27,8 @@ def test_databento_download_needs_two_gates(tmp_path, monkeypatch):
 
 def test_canonical_gate_is_shadow_even_when_available():
     settings = load_settings()
+    if not Path(settings.validation_root).exists():
+        pytest.skip(f"canonical validation repo not present at {settings.validation_root}")
     result = canonical_gate(
         np.tile([0.01, -0.005, 0.008, -0.002, 0.004], 20),
         n_trials=5, validation_root=settings.validation_root,

@@ -16,6 +16,6 @@ secrets/
 *.duckdb
 *.duckdb.wal
 data/
-reports/
+/reports/
 notebooks/.ipynb_checkpoints/
 
